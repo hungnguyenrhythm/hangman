@@ -1,1 +1,1 @@
-print("Hung and Mathew like to eat each others ass")
+print("Hung and Mathew")
