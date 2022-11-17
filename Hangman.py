@@ -129,15 +129,31 @@ def draw_parts(attempt):
     
 def dict_hint(word):
     hints = {
-        "dog": "A stupid animal that serves as playthings for humans.",
-        "cat": "A stupid animal after reading the U.S. Constitution.",
+        "dog": "The most common pet for people",
+        "cat": "A small furry animal with claws and wiskers",
+        "ink":  "Secreted from squids and used to write",
+        "pet": "A stupid animal that serves as playthings for humans.",
+        "god": "A part of religious people's believe",
+        "war": "A conflict between two groups",
+        "zip": "Something done to a zipper",
+        "van": "A vehical used to kidnap underage children",
+        "hat": "A cap",
+        "eat": "something done to your food",
         "person": "I don't know, singular of people??????",
         "iphone": "Overrated touch-screen phone with expensive prices and cheap components.",
-        "sophisticated": "use for describing someone who passes Calculus 2 with a 92 or above.",
+        "vitamin": "Types of minerals found in fruts and the sun",
+        "focus": "something needed to do things",
+        "attention": "Instagram models need a lot of this",
+        "strawberry": "A small, sweet, red fruit",
+        "minute": "A way of measuring time",
+        "sophisticated": "A highly complicated or developed person",
         "quetzacoatlus": "Extinct ancient flying dinosaurs.",
         "anomalocaris": "Ancient rock lobsters.",
         "smaragdine": "emerald green in color.",
-        "chiaroscurist": "use for implying an artist that watches too much european films."
+        "chiaroscurist": "use for implying an artist that watches too much european films.",
+        "pneumonoultramicroscopicsilicovolcanoconiosis": "The longest",
+        "antidisestablishmentarianism": "The third longest",
+        "Pseudopseudohypoparathyroidism": "The second longest",
         }
     hint = hints[word]
     return hint
@@ -145,9 +161,9 @@ def dict_hint(word):
 # Define function to create the different levels of the game
 def select_level(level):
     if level == 1:
-        levellist = ["dog", "cat"]
+        levellist = ["dog", "cat", "ink", "pet", "god", "war", "zip", "van", "hat", "eat"]
     if level == 2:
-        levellist = ["person", "iphone"]
+        levellist = ["person", "iphone", "vitamin", "focus", "attention", "strawberry", "minute"]
     if level == 3:
         levellist = ["sophisticated", "quetzacoatlus", "anomalocaris", "smaragdine", "chiaroscurist"]
     if level == 4:
