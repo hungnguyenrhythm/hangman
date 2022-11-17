@@ -153,7 +153,7 @@ def dict_hint(word):
         "chiaroscurist": "use for implying an artist that watches too much european films.",
         "pneumonoultramicroscopicsilicovolcanoconiosis": "The longest",
         "antidisestablishmentarianism": "The third longest",
-        "Pseudopseudohypoparathyroidism": "The second longest",
+        "pseudopseudohypoparathyroidism": "The second longest",
         }
     hint = hints[word]
     return hint
@@ -167,7 +167,7 @@ def select_level(level):
     if level == 3:
         levellist = ["sophisticated", "quetzacoatlus", "anomalocaris", "smaragdine", "chiaroscurist"]
     if level == 4:
-        levellist = ["pneumonoultramicroscopicsilicovolcanoconiosis", "antidisestablishmentarianism", "Pseudopseudohypoparathyroidism"]
+        levellist = ["pneumonoultramicroscopicsilicovolcanoconiosis", "antidisestablishmentarianism", "pseudopseudohypoparathyroidism"]
     return levellist
 
 # Define the helper function to decide to go to the next level or ask to restart if you failed
