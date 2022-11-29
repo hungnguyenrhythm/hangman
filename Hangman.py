@@ -84,14 +84,15 @@ import random
 # Define function for finding the number of time the letter appears in the word to guess
 def num_of_letter(choice, word):
     if choice in word:
-        return word.count(choice)
-    return 0
+        return word.count(choice)   # Return the number of times the letter appears in the word
+    return 0    # Return 0 if the letter is not in the word
 
 # Define function to display the current progress of the player
 def display_progress(progress, word, guess, count):
-    progress = list(progress)
-    word = list(word)
+    progress = list(progress) # Turn the progress into a list
+    word = list(word)   # Turn the word into a list
     result = ""
+    # Pop a space out and replace it with the letter for the progress displayment
     for i in range(count):
         index = word.index(guess)
         progress.pop(index)
@@ -99,12 +100,13 @@ def display_progress(progress, word, guess, count):
         word.pop(index)
         word.insert(index, " ")
     for items in progress:
-        result += items
+        result += items # Concatenate all of the items in the list variable progress into variable result and return ity
     return result
 
 # Define function to tell body parts
 def body(attempt, word):
-    parts_of_body = ["Head", "Body", "Left Arm", "Right Arm", "Left Leg", "Right Leg"]
+    # Output what body parts the user got after guessing a letter wrong.
+    parts_of_body = ["Head", "LeftArm", "Body", "RightArm", "LeftLeg", "RightLeg"]
     print("You now have: ", end= " ")
     if attempt == 1:
         print(parts_of_body[0])
@@ -120,6 +122,8 @@ def body(attempt, word):
 # Define function to draw body parts
 def draw_parts(attempt):
     human = ["  0", "/", "|", "\\", " /", "\\"]
+    # Illustrating what body parts the user got after guessing a letter wrong.
+    print("|--")
     for index in range(attempt):
         if index == 0 or index == 3 or index == 5:
             print(human[index])
@@ -128,6 +132,7 @@ def draw_parts(attempt):
     print()
     
 def dict_hint(word):
+    # A dictionary that contains definitions for the words that were randomly generaated by the computer
     hints = {
         "dog": "The most common pet for people",
         "cat": "A small furry animal with claws and wiskers",
@@ -155,6 +160,7 @@ def dict_hint(word):
         "antidisestablishmentarianism": "The third longest",
         "pseudopseudohypoparathyroidism": "The second longest",
         }
+    # Find the definition of the word and return that word
     hint = hints[word]
     return hint
 
@@ -170,31 +176,6 @@ def select_level(level):
         levellist = ["pneumonoultramicroscopicsilicovolcanoconiosis", "antidisestablishmentarianism", "pseudopseudohypoparathyroidism"]
     return levellist
 
-# Define the helper function to decide to go to the next level or ask to restart if you failed
-def option(level, fail):
-    if fail == 1:
-        choice = input("Do you want to restart(y) or do you want to quit(n): ")
-        while (choice != "y") and (choice != "n"):
-            choice = input("Please try again: ")
-        if choice == "y":
-            main(level)
-        elif choice == "n":
-            print("GOODBYE")
-    elif fail == 0:
-        if level < 5:
-            if level == 1:
-                print(f"On to level {level}")
-                main(level)
-            else:
-                choice = input("Do you want to go to the next level(y) or do you want to quit(n): ")
-                if choice == "y":
-                    print(f"On to level {level}")
-                    main(level)
-                elif choice == "n":
-                    print("GOODBYE")
-        elif level == 5:
-            print("You Finished All The Levels CONGRADULATIONS!!!!!")
-
 # define the main() function:
 def main(level):
     word_lst = select_level(level)
@@ -203,6 +184,9 @@ def main(level):
     fail_attempts = 0
     used_list = []
     while fail_attempts < 6:
+        print()
+        print("*" * 12)
+        print()
         print(f"Your progress is {progress}.")
         guess = input("Guess the character of the word(or press ENTER to quit): ")
         while guess in used_list:
@@ -223,12 +207,42 @@ def main(level):
         if progress == word:
             break
     if progress == word:
+        print()
         print(f"you got the word {word}")
-        print(F"CONGRADULATIONS YOU WIN LEVEL {level}")
-        level += 1
-        option(level, 0)
+        print(F"CONGRADULATIONS YOU WIN LEVEL {level} d(ὃ⍜ ὅ)b")
+        print()
+        option(level + 1, 0)
     if fail_attempts == 6:
-        print("GAME OVER")
+        print("GAME OVER (X_X)")
         option(level, 1)
 
+# Define the option() function to decide to go to the next level or ask to restart if you failed
+def option(level, fail):
+    if fail == 1:
+        choice = input("Do you want to restart(y) or do you want to quit(n): ")
+        while (choice != "y") and (choice != "n"):
+            choice = input("Please try again: ")
+        if choice == "y":
+            main(level)
+        elif choice == "n":
+            print("GOODBYE")
+    elif fail == 0:
+        if level < 5:
+            if level == 1:
+                print(f"On to level {level}")
+                main(level)
+            else:
+                choice = input("Press 'y' to continue, or press 'n' to quit: ")
+                if choice == "y":
+                    print(f"On to level {level}")
+                    print()
+                    print("*" * 12)
+                    print()
+                    main(level)
+                elif choice == "n":
+                    print("GOODBYE")
+        elif level == 5:
+            print("☆彡(/^ ^)/ CONGRATULATIONS YOU CLEARED ALL OF THE LEVEL!!!! ヘ(^ ^ヘ)☆彡")
+
+# Call the function option() to start the game from level 1
 option(1, 0)
